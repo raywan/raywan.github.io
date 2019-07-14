@@ -321,7 +321,6 @@ function main() {
   const uniforms = {
     iTime: { value: 0 },
     iResolution:  { value: new THREE.Vector2() },
-    texture1: { type: "t", value: THREE.ImageUtils.loadTexture( "texture.jpg" ) }
     // viewMatrix: real_camera.matrixWorldInverse,
   };
 
