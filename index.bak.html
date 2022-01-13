@@ -2,68 +2,65 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Raymond Wan</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/main.css">
 </head>
 <body>
-  <div class="container">
-    <section class="hero">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            Raymond Wan
-          </h1>
-          <h2 class="subtitle">
-            🆗 Software Engineer 💻
-          </h2>
-          <div class="content">
-            <h4>🌅 By day, </h4>
-            <p>I work on server code and internal tooling.</p>
+    <header>
+        <h1><a href="/">Raymond Wan</a></h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="./projects.html">Projects</a>
+            <a href="./blog.html">Blog</a>
+        </nav>
+    </header>
+    <main>
+        <h3>Hello!</h3>
+        <p>You seem to have stumbled upon my personal website. Here's a bit about me:</p>
 
-            <h4>🌃 By night, </h4>
-            <p>Probably working on either my renderers, game engine, or prototyping some game idea.</p>
+        <h4>By day</h4>
+        <p>
+            I work as a 3D Programmer at <a href="https://montreal.ubisoft.com/en/">Ubisoft Montreal</a>.
+        </p>
+        <p>I'm currently on the <a href="https://en.wikipedia.org/wiki/Ubisoft_Anvil">Anvil</a> rendering pipeline team.</p>
 
-            <h4>🌻 My technical interests are: </h4>
+        <h4>By night</h4>
+        <p>I'm a part of
+            <!-- <a href="https://chromajump.com" style="background-color:#fdcc57; padding:3px;">Chroma Jump</a> -->
+            <a href="https://chromajump.com">Chroma Jump</a>
+        and work on various projects.</p>
+
+        <h4>My technical interests are:</h4>
+        <ul>
+            <li>Computer Graphics</li>
+            <li>Game Engines</li>
+            <li>Tooling</li>
+        </ul>
+        <h4>Schooling</h4>
+        <ul>
+            <li><p><a href="https://uwaterloo.ca/">University of Waterloo</a></p></li>
             <ul>
-              <li>Computer Graphics</li>
-              <li>Game Engines</li>
-              <li>Tooling</li>
-            </ul>
-            <h4>🏫 Schooling </h4>
-            <ul>
-              <li><h5>University of Waterloo</h5></li>
-              <ul>
                 <li>Bachelor of Computer Science</li>
                 <ul>
-                  <li>Joint Computer Science and Statistics</li>
-                  <li>2013 - 2018</li>
+                    <li>Joint Honours Computer Science and Statistics</li>
+                    <li>2013 - 2018</li>
                 </ul>
-              </ul>
             </ul>
-            <h4>🔗 Links</h4>
-            <ul>
-              <li><a href="https://github.com/raywan">Github</a></li>
-              <li><a href="https://twitter.com/rayxwan">Twitter</a></li>
-              <li><a href="https://www.linkedin.com/in/rayxwan/">LinkedIn</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <div class="columns">
-      <div class="tile is-parent">
-        <article class="tile is-child is-4 notification is-grey">
-          <p><strong>Bonus:</strong> Here's a simple ray marching fragment shader that spells my name with torus and capsule SDFs :)</p>
-          <div class="content">
-            <canvas id="c"></canvas>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-  <script src="static/js/three.min.js"></script>
-  <script src="static/js/main.js"></script>
+        </ul>
+        <!-- <h4>Recent posts</h4> -->
+        <h4>Links</h4>
+        <ul>
+            <li><a target="_blank" href="https://github.com/raywan">Github</a></li>
+            <li><a target="_blank" href="https://twitter.com/rayxwan">Twitter</a></li>
+            <li><a target="_blank" href="https://www.linkedin.com/in/rayxwan/">LinkedIn</a></li>
+        </ul>
+    </main>
+    <footer>
+        <p><small>Generated with <a href="https://github.com/raywan/hyperflat">hyperflat</a></small></p>
+        <small>&copy; Copyright 2021, Raymond Wan. <a href="https://en.m.wikipedia.org/wiki/All_rights_reserved#Obsolescence">All Rights Reserved</a></small>
+    </footer>
 </body>
 </html>

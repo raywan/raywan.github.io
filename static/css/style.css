@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    --textcolor: #121212;
+    --bgcolor: #fffaef;
+    --highlight_color: #0d27bd;
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        --textcolor: #dadada;
+        --bgcolor: #141414;
+        --highlight_color: #ffc400;
+    }
+}
+
+body {
+    padding: 1em;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.4;
+    color: var(--textcolor);
+    background: var(--bgcolor);
+    position: relative;
+    max-width: 42em;
+    margin: auto;
+}
+
+footer {
+  padding: 1.5em;
+  text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--highlight_color);
+}
+
+a:hover {
+    border-bottom: 1px solid;
+}
+
+a[href*="//"]:after {
+  font-weight: 300;
+  font-size: .85em;
+  content: "\2197"; /* top right arrow */
+  color: var(--textcolor);
+  opacity: .25;
+}
+
+a[href*="//"]:hover:after {
+  color: var(--highlight_color);
+  opacity: 1;
+}
+
+a:before {
+  font-size: .7em;
+  margin-right: .4em;
+}
+
+a[href$=".pdf"]:before { content: "PDF"; }
+a[href$=".txt"]:before { content: "TXT"; }
+a[href$=".mp3"]:before { content: "MP3"; }
+a[href$=".zip"]:before { content: "ZIP"; }
+a[href$=".rar"]:before { content: "RAR"; }
+a[href$=".jpeg"]:before,
+a[href$=".jpg"]:before,
+a[href$=".gif"]:before,
+a[href$=".png"]:before { content: "IMG"; }
+
+nav a:not(:last-of-type) {
+    margin-right: 1.5vw;
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+small {
+    font-size: .85em;
+}
+
+hr {
+    height: 1px;
+    border: 0;
+    background: currentColor;
+    opacity: .1;
+    margin: 1.2em 0;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+abbr[title]:hover {
+    opacity: .7;
+    cursor: help;
+}
+
+blockquote {
+    padding-left: 2ch;
+    opacity: .7;
+    margin-bottom: .6em;
+    position: relative;
+}
+
+@media only screen and (max-width: 680px) {
+  body { font-size: 16px; }
+}
+
+@media only screen and (max-width: 540px) {
+  nav { width: 100%; } /* Fix for older webkit versions */
+}
+
+pre {
+    background-color: #eee;
+    border-left: 1px solid #999;
+    display: block;
+    padding: 1em;
+    white-space: pre-wrap;
+    word-break: keep-all;
+    font-family: Consolas, monospace;
+}
