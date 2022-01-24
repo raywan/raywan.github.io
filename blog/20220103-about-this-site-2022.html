@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Raymond Wan - About This Site in 2022</title>
+
+    <meta property="og:title" content="Raymond Wan - About This Site in 2022 ">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/fonts/Inter/inter.css">
+    <link rel="stylesheet" href="/static/css/prism.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+              // customised options
+              // • auto-render specific keys, e.g.:
+              delimiters: [
+                  {left: '$$', right: '$$', display: true},
+                  {left: '$', right: '$', display: false},
+                  {left: '\\(', right: '\\)', display: false},
+                  {left: '\\[', right: '\\]', display: true}
+              ],
+              // • rendering keys, e.g.:
+              throwOnError : false
+            });
+        });
+    </script>
+</head>
+<body>
+    <header id="site-header">
+        <h2><a href="">Raymond Wan</a></h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/blog.html">Blog</a>
+            <!-- <a href="contact.html">Contact</a> -->
+            <!-- <a href="projects.html">Projects</a> -->
+        </nav>
+    </header>
+    <main id="site-main">
+        <div id="content-meta">
+            <h1>About This Site in 2022</h1>
+            <p class="date">2022/01/03</p>
+            <p>Tags:
+                
+                    <a href="/tags.html#programming">programming</a>,
+                
+                    <a href="/tags.html#c">c</a>,
+                
+                    <a href="/tags.html#web">web</a>
+                
+            </p>
+        </div>
+        <div id="content">
+            <p>I usually only update my personal website if something changes professionally.
+In this case, it's a job change. For this iteration of my personal website,
+along with a simple style change inspired by this <a href="https://john-doe.neocities.org/">page</a>,
+I thought it would be fun to also implement a simple blog.</p>
+<p>To do this, I wrote a simple static site generator (SSG) in C99 simply called <code>genblog</code>
+that essentially scans a directory of input files i.e. posts, and outputs HTML files. Currently, the
+program's only external dependency is <a href="https://github.com/commonmark/cmark">cmark</a>,
+which performs the work of parsing and outputting HTML from Markdown.
+Although I'd like to have no dependencies, my previous attempt at writing an SSG
+had me designing, implementing, and debugging my own custom markup language,
+which took too much time. I actually would prefer my own markup language (since I had some interesting features that I wanted),
+but for the sake of finishing this project, I decided to compromise and offload the work
+to a library. Thankfully, cmark was very easy to build and use.
+If I ever did want to revisit parsing my own
+markup language in the future, removing cmark would be really simple. Just
+one function call from cmark does all the work.</p>
+<p>Posts are written as Markdown files but have an additional plaintext header for
+metadata. The header for this post is the following:</p>
+<pre><code class="language-plaintext">title: About this Site in 2022
+author: Raymond Wan
+created_at: 2022/01/03
+tags: programming, c, web
+===
+</code></pre>
+<p>The metadata header is parsed and used for sorting/grouping posts. The
+remaining bytes in the file are considered to be part of the post. These
+bytes are fed into cmark to generate the HTML. As mentioned previously,
+just one function call does all the work. Pass in a buffer with its length and some options and cmark
+will return a formatted buffer back which can then be written to the output file.</p>
+<pre><code class="language-c">char *formatted_content = cmark_markdown_to_html(post-&gt;content_raw_str.buf, post-&gt;content_raw_str.len, CMARK_OPT_UNSAFE);
+</code></pre>
+<p>Note that <a href="https://github.com/commonmark/cmark/blob/master/src/cmark.h#L571"><code>CMARK_OPT_UNSAFE</code></a>
+prevents HTML from being escaped. This is intended because I want to have DOM
+elements in the post that JavaScript libraries can search for and inject content.
+For example, making visualizations with <a href="https://d3js.org/">d3.js</a>,
+which I plan on using some future posts I have in mind.</p>
+<p>Next, I wrote a simple <a href="https://en.wikipedia.org/wiki/Template_processor">template processor</a>.
+I debated on whether or not I wanted to spend the effort on this but I think
+it was a good decision. The template syntax is based on
+<a href="https://mustache.github.io/">mustache</a> and to my surprise, this part wasn't too
+difficult to implement. I believe I have all the features I need from
+mustache and some more. In a previous attempt writing an SSG, I tried to keep
+things &quot;simple&quot; by managing and generating HTML in the source code. Not only
+did this clutter my source code with large blocks of HTML strings
+(which became super annoying), I think it was less flexible than just having
+a simple template processor.</p>
+<p>Here is a sample of the template used for post:</p>
+<pre><code class="language-html">&lt;main id=&quot;site-main&quot;&gt;
+    &lt;div id=&quot;content-meta&quot;&gt;
+        &lt;h1&gt;{{ title }}&lt;/h1&gt;
+        &lt;p class=&quot;date&quot;&gt;{{created_at}}&lt;/p&gt;
+        &lt;p&gt;Tags:
+            {{#tags}}
+                &lt;a href=&quot;/tags.html#{{tag_name}}&quot;&gt;{{ tag_name }}&lt;/a&gt;{{?next_tag_exists}},{{/next_tag_exists}}
+            {{/tags}}
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;content&quot;&gt;
+        {{ content }}
+    &lt;/div&gt;
+&lt;/main&gt;
+</code></pre>
+<p>After all the the post pages have been generated, there needs to a way to organize and find the posts
+Two pages are generated for this.
+<a href="/blog.html"><code>blog.html</code></a> is a directory of all posts that were generated sorted by date.
+<a href="/tags.html"><code>tags.html</code></a> is a directory of tags where each tag section contains posts that contain that tag.</p>
+<p>Another feature for the blog that I wanted to have was math rendering via
+$\LaTeX$. Right now, <a href="https://katex.org/">KaTeX</a> is used for this feature and
+is one of the JavaScript dependencies. Once
+the DOM content has loaded, $\KaTeX$ parses the document for latex and
+renders it out. For now, this is the simplest solution to get things going but
+I really want to be able to render out the LaTeX offline.
+To do this, I would have to parse the content of the post for valid LaTeX myself and pass
+those to KaTex (assuming that I'm still using it) via an external shell command.</p>
+<p>I think that this high level overview is all that I'll go over for now.
+There are more features and <em>lots</em> of optimizations that I have in mind for this project,
+but in its current state, the program works as I intend. Perhaps I'll go over all of these
+next year.</p>
+
+        </div>
+    </main>
+    <footer id="site-footer">
+        <p><small>This page was <a href="/blog/20220103-about-this-site-2022.html">generated</a>.</small></p>
+        <small>&copy; Copyright 2022, Raymond Wan. <a href="https://en.m.wikipedia.org/wiki/All_rights_reserved#Obsolescence">All Rights Reserved</a></small>
+    </footer>
+    <script src="/static/js/prism.js"></script>
+</body>
+</html>

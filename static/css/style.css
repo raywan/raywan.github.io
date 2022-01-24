@@ -111,11 +111,24 @@ blockquote {
 }
 
 pre {
-    background-color: #eee;
-    border-left: 1px solid #999;
-    display: block;
-    padding: 1em;
-    white-space: pre-wrap;
-    word-break: keep-all;
-    font-family: Consolas, monospace;
+    /*background-color: #eee;*/
+    /*border-left: 1px solid #999;*/
+    /*display: block;*/
+    /*padding: 1em;*/
+    /*white-space: pre-wrap;*/
+    /*word-break: keep-all;*/
+    font-size: 0.85em !important;
+    /*font-family: Consolas, monospace;*/
+}
+
+.date {
+    color: grey;
+}
+
+#content-meta > h1 {
+    margin-bottom: 0;
+}
+
+#content-meta > p {
+    margin: 0;
 }
