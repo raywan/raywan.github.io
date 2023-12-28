@@ -1,8 +1,8 @@
 * {
     box-sizing: border-box;
     --textcolor: #121212;
-    --bgcolor: #fffaef;
-    --highlight_color: #0d27bd;
+    --bgcolor: #fffdf8;
+    --highlight_color: #120A8F; /* Ultramarine */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,7 +15,7 @@
 
 body {
     padding: 1em;
-    font-family: 'Inter', sans-serif;
+    font-family: sans-serif;
     line-height: 1.4;
     color: var(--textcolor);
     background: var(--bgcolor);
