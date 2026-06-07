@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Colophon - Raymond Wan's site</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍃</text></svg>" />
+    <link rel="stylesheet" href="static/main.css" type="text/css" />
+  </head>
+  <body>
+    <div id="container">
+      <div id="header-row">
+        <h1>Raymond Wan's Website</h1>
+        <div id="marquee-bar">
+          <span id="marquee-content" >.☘︎ ݁˖.☘︎ ݁˖.☘︎ ݁˖.☘︎ ݁˖ welcome! enjoy your stay .☘︎ ݁˖.☘︎ ݁˖.☘︎ ݁˖.☘︎ ݁˖</span>
+        </div>
+      </div>
+      <hr />
+      <div id="layout">
+        <nav id="sidebar">
+          <div class="nav-section">
+            <b>navigate</b>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="projects.html">Projects</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <b>external links</b>
+            <ul>
+              <li>
+                <a href="https://github.com/raywan" target="_blank">GitHub</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/rayxwan/" target="_blank">LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-section">
+            <b>currently</b>
+            <ul>
+              <li class="currently-item">working on: <i>RPG, music :)</i></li>
+              <li class="currently-item">playing: <i>Bravely Default HD Remaster, MTG (Standard & Pauper)</i></li>
+            </ul>
+          </div>
+        </nav>
+
+        <main>
+          <div id="content">
+            <div id="content-title">
+              Colophon
+            </div>
+            <p class="post-meta">2026-06-05</p>
+            <p class="post-meta"><i>#c</i></p>
+            <div id="content-body">
+              <hr id="metadata-content-break"/><h3 id="the-sausage">The Sausage</h3>
+<p>This site was made using a custom static site generator (SSG) I wrote
+in C99 that I call <code>gensite2</code>.</p>
+<p>The previous version of my website also used a custom SSG but written
+in Rust (called <code>gensite</code>) and the one before that was in C,
+so we’re just going full circle.</p>
+<p><code>gensite2</code> scans a directory of content, parses templates
+written in a template language based on <a
+href="https://jinja.palletsprojects.com/en/stable/">Jinja2</a> (to
+extent of the feature set I currently use) then renders each page. Once
+each page is generated, directory pages are generated and static assets
+are copied to the output directory.</p>
+<p>Each content page consists of a metadata header that the program will
+parse. The following is the metadata header for this page:</p>
+<pre class="plaintext"><code>---
+title: Colophon
+author: Raymond Wan
+created_at: 2026-06-05
+is_draft: false
+tags: c
+---</code></pre>
+<p>Template files are parsed and rendered out with each processed
+content page. Here is an example of one of the templates used:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;post-list&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;post-date&quot;</span><span class="dt">&gt;</span>{{ date }}<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">&quot;{{ link }}&quot;</span><span class="dt">&gt;</span>{{ title }}<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">span</span><span class="ot"> class</span><span class="op">=</span><span class="st">&quot;post-tags&quot;</span><span class="dt">&gt;</span>{{ tags }}<span class="dt">&lt;/</span><span class="kw">span</span><span class="dt">&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span></code></pre></div>
+<h3 id="aesthetic">Aesthetic</h3>
+<p>For this version of my personal website, I’ve decided to do a
+throwback on the design. It’s very reminiscent of my times of using
+website creators like Piczo when I was younger. The design is simple, a
+bit plain to keep it professional but with a few embelishments and some
+88x31 web badges for personality and as callbacks to some of my
+experiences of computers growing up.</p>
+
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div id="footer-divider">· ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ ·</div>
+
+      <hr />
+      <footer>
+        <div id="badges">
+          <!--<img src="https://cyber.dabamos.de/88x31/under-con.gif"/>-->
+          <a href="https://anybrowser.org/campaign/index.html"><img src="static/images/web_buttons/bvwabao.gif" alt="anybrowser"/></a>
+          <img src="static/images/web_buttons/xp.gif" alt="windows xp"/>
+          <img src="static/images/web_buttons/newgrounds.gif" alt="newgrounds"/>
+        </div>
+        <p><small>&copy; Copyright 2022-2026, Raymond Wan. <a href="https://en.m.wikipedia.org/wiki/All_rights_reserved#Obsolescence"></a>All Rights Reserved</a></small></p>
+        <p><small><a href="colophon.html">Colophon</a></small></p>
+        <p><small>Last Updated: 2026-06-06</small></p>
+      </footer>
+    </div>
+  </body>
+</html>

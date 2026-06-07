@@ -1,0 +1,299 @@
+:root {
+    --dim-gold: #a08828;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    background-color: #889977;
+    color: #000000;
+    font-family: "Times New Roman", Times, serif;
+}
+
+a {
+    /*ultramarine*/
+    color: #1a3399;
+}
+
+a:visited {
+    color: #553388;
+}
+
+a:hover {
+    color: #cc2222;
+}
+
+#container {
+    max-width: 52rem;
+    margin: 1.5rem auto;
+    padding: 1.5rem 2rem;
+    background-color: #ccddbb;
+    border: 1px solid #555555;
+}
+
+#content-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #121212;
+    margin: 14px 0 6px 0;
+    border-bottom: 1px solid #778866;
+    padding-bottom: 2px;
+}
+
+#content-body img {
+    width: 100%;
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #121212;
+    margin: 0;
+    white-space: nowrap;
+}
+
+p {
+    margin: 0 0 1rem 0;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #778866;
+    margin: 10px 0;
+}
+
+#header-row {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+#marquee-bar {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    background-color: #2e4019;
+    color: #a3b580;
+    padding: 2px 6px;
+    overflow: hidden;
+    align-self: center;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #1a2a0e #4a6030 #4a6030 #1a2a0e;
+}
+
+#marquee-bar #marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: scroll-left 12s linear infinite;
+    font-family: "Courier New", monospace;
+    font-size: 0.8rem;
+    /*letter-spacing: 0.5px;*/
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+#layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* NAVIGATION */
+
+#sidebar {
+    width: 10em;
+    flex-shrink: 0;
+}
+
+.nav-section {
+    margin-bottom: 1rem;
+}
+
+.nav-section b::before {
+    content: "✧˖°. ";
+    color: var(--dim-gold);
+}
+
+.nav-section b {
+    display: block;
+    font-size: 1rem;
+    color: #121212;
+    border-bottom: 1px solid #778866;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+}
+
+.nav-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 0.8rem;
+}
+
+.nav-section ul li {
+    padding: 1px 0;
+    font-size: 0.9rem;
+}
+
+.nav-section ul li::before {
+    /*content: "◆︎ ";*/
+    content: "» ";
+    /*content: "✧˖ ";*/
+    color: var(--dim-gold);
+}
+
+.nav-section ul li a {
+    text-decoration: none;
+    color: #1a3399;
+}
+
+.nav-section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* POSTS */
+
+main {
+    flex: 1;
+    min-width: 0;
+}
+
+.post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list li {
+    padding: 4px 0;
+    border-bottom: 1px dotted #778866;
+}
+
+.post-list li:last-child {
+    border-bottom: none;
+}
+
+.post-date {
+    color: #555555;
+    font-family: "Courier New", monospace;
+    font-size: 0.9rem;
+    margin-right: 8px;
+}
+
+.post-tags {
+    color: #555555;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-family: "Courier New", monospace;
+    margin-left: 6px;
+}
+
+.post-meta {
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+    color: #555555;
+    margin: 0 0 4px 0;
+}
+
+/* CODE */
+
+pre {
+    background: wheat;
+    padding: 0.75rem;
+}
+
+/* FOOTER */
+
+#footer-divider {
+    text-align: center;
+    color: var(--dim-gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 8px 0 4px;
+    user-select: none;
+    opacity: 0.7;
+}
+
+footer #badges {
+    text-align: center;
+    margin: 4px 0;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.9em;
+    color: #445533;
+    margin: 2px 0;
+}
+
+footer a {
+    color: #445533;
+}
+
+footer #badges img {
+    image-rendering: pixelated;
+    border: 0;
+    margin: 0 2px;
+    vertical-align: middle;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    #container {
+        margin: 1.5rem auto;
+        padding: 1rem 1rem;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        white-space: normal;
+    }
+
+    #header-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    #marquee-bar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #layout {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #sidebar {
+        width: 100%;
+        border-bottom: 1px solid #778866;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+
+    .nav-section {
+        margin-bottom: 6px;
+    }
+
+    .nav-section ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 12px;
+        padding-left: 0;
+    }
+
+    .nav-section ul li::before {
+        content: "";
+    }
+}
